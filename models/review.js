@@ -22,7 +22,7 @@ class Review {
                              review_text,
                              review_date)
            VALUES ($1, $2, $3, $4)
-           RETURNING reviewer_username,
+           RETURNING id, reviewer_username,
                       reviewed_username,
                       review_text,
                       review_date`,
@@ -33,10 +33,12 @@ class Review {
         data.review_date,
       ]
     );
-    let listing = result.rows[0];
-    console.log("Inserted review in DB: ", listing);
+    let review = result.rows[0];
+    review.review_date = review.review_date.toISOString().split("T")[0];
 
-    return listing;
+    console.log("Inserted review in DB: ", review);
+
+    return review;
   }
 
   /** Find all reviews.
@@ -69,7 +71,10 @@ class Review {
            WHERE id = $1`,
       [id]
     );
-
+    console.log(result);
+    let review = result.rows[0];
+    console.log(review);
+    review.review_date = review.review_date.toISOString().split("T")[0];
     return result.rows;
   }
 }

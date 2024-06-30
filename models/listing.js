@@ -16,6 +16,8 @@ class Listing {
 
   static async create(data) {
     // Insert the address first
+    const addresses = await db.query(`SELECT * FROM address`);
+
     const addressResult = await db.query(
       `INSERT INTO address (state, city)
       VALUES ($1, $2)
@@ -33,7 +35,7 @@ class Listing {
                              shared_by_username,
                              address_id)
            VALUES ($1, $2, $3, $4, $5)
-           RETURNING title, description, image_url, shared_by_username, address_id`,
+           RETURNING id, title, description, image_url, shared_by_username, address_id`,
       [
         data.title,
         data.description,

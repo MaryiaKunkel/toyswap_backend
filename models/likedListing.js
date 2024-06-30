@@ -37,7 +37,7 @@ class LikedListing {
       FROM liked_listing
       JOIN listing ON liked_listing.listing_id = listing.id
      JOIN address ON listing.address_id = address.id
-      WHERE liked_listing.id=$1`,
+      WHERE liked_listing.listing_id=$1`,
       [listingId]
     );
     return result.rows[0];
