@@ -56,3 +56,7 @@ VALUES ('john_doe', 'jane_smith', 'Great seller!', '2023-01-01'),
         ('jane_smith', 'alice_johnson', 'Fast shipping!', '2023-01-02'),
         ('alice_johnson', 'john_doe', 'Item as described.', '2023-01-03');
 
+INSERT INTO toy_exchange (listing_id, shared_by_username, shared_to_username, exchange_date) 
+VALUES (1, 'jane_smith', 'john_doe', '2023-01-01'),
+        (2, 'alice_johnson', 'jane_smith', '2023-01-02'),
+        (3, 'john_doe', 'alice_johnson', '2023-01-03');

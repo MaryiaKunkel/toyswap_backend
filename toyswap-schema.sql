@@ -42,3 +42,14 @@ CREATE TABLE review (
   review_text TEXT NOT NULL,
   review_date DATE NOT NULL
 );
+
+CREATE TABLE toy_exchange (
+  id SERIAL PRIMARY KEY,
+  listing_id INTEGER NOT NULL
+    REFERENCES listing(id) ON DELETE CASCADE,
+  shared_by_username VARCHAR(25) NOT NULL
+    REFERENCES users(username) ON DELETE CASCADE,
+  shared_to_username VARCHAR(25) NOT NULL
+    REFERENCES users(username) ON DELETE CASCADE,
+  exchange_date DATE NOT NULL
+);

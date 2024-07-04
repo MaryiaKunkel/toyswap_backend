@@ -13,6 +13,7 @@ const usersRoutes = require("./routes/users");
 const reviewsRoutes = require("./routes/reviews");
 const listingsRoutes = require("./routes/listings");
 const likedListingRoutes = require("./routes/likedListings");
+const toyExchangesRoutes = require("./routes/toyExchanges");
 const morgan = require("morgan");
 
 const app = express();
@@ -27,6 +28,8 @@ app.use("/users", usersRoutes);
 app.use("/listings", listingsRoutes);
 app.use("/reviews", reviewsRoutes);
 app.use("/liked-listings", likedListingRoutes);
+app.use("/toy-exchanges", toyExchangesRoutes);
+
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
   return next(new NotFoundError());
